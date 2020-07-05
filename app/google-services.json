@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "133187621887",
+    "firebase_url": "https://tuktuk-f91da.firebaseio.com",
+    "project_id": "tuktuk-f91da",
+    "storage_bucket": "tuktuk-f91da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133187621887:android:f933cdde44c4d62e4c0dca",
+        "android_client_info": {
+          "package_name": "com.kredivation.tuktuk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133187621887-v9vmjah21d9p22c882h028lfuul7qbca.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kredivation.tuktuk",
+            "certificate_hash": "ada3dadae6bc89e21f1ad490a5f80929ca0a0c39"
+          }
+        },
+        {
+          "client_id": "133187621887-23pceqfbj307i2mc2evgjmo9bq9vr8c0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkEL35VcPbaY-uxnwldQv1IX7EFML5Zv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133187621887-23pceqfbj307i2mc2evgjmo9bq9vr8c0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
