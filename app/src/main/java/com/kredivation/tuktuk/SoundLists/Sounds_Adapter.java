@@ -108,9 +108,6 @@ public class Sounds_Adapter extends RecyclerView.Adapter<Sounds_Adapter.CustomVi
 
 
     }
-
-
-
 }
 
 

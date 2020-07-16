@@ -73,6 +73,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.kredivation.tuktuk.framework.IAsyncWorkCompletedCallback;
+import com.kredivation.tuktuk.framework.ServiceCaller;
 import com.squareup.picasso.Picasso;
 import com.kredivation.tuktuk.Chat.Audio.Play_Audio_F;
 import com.kredivation.tuktuk.Chat.Audio.SendAudio;
@@ -207,10 +209,6 @@ public class Chat_Activity extends Fragment {
         }
 
 
-
-
-
-
         p_bar=view.findViewById(R.id.progress_bar);
         // this is the black color loader that we see whan we click on save button
         lodding_view = new IOSDialog.Builder(context)
@@ -258,12 +256,18 @@ public class Chat_Activity extends Fragment {
                 if (view.getId() == R.id.msgtxt) {
                     if(senderid.equals(item.getSender_id()) && istodaymessage(item.getTimestamp()))
                     delete_Message(item);
+                    else
+                        Toast.makeText(context, "You can delete only today message!", Toast.LENGTH_SHORT).show();
                 } else if (view.getId() == R.id.chatimage) {
                     if(senderid.equals(item.getSender_id()) && istodaymessage(item.getTimestamp()))
                     delete_Message(item);
+                    else
+                        Toast.makeText(context, "You can delete only today message!", Toast.LENGTH_SHORT).show();
                 }else if (view.getId() == R.id.audio_bubble) {
                     if(senderid.equals(item.getSender_id()) && istodaymessage(item.getTimestamp()))
                         delete_Message(item);
+                    else
+                        Toast.makeText(context, "You can delete only today message!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -470,8 +474,6 @@ public class Chat_Activity extends Fragment {
 
 
         getChat_data();
-
-
         return view;
     }
 
@@ -1782,9 +1784,16 @@ public class Chat_Activity extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+//        ApiRequest.Call_Api(context,Variables.sendPushNotification,notimap,null);
+        ServiceCaller serviceCaller = new ServiceCaller(context);
+        serviceCaller.CallCommanServiceMethod(Variables.sendPushNotificationnew, notimap, "SendPushNotification", new IAsyncWorkCompletedCallback() {
+            @Override
+            public void onDone(String result, boolean isComplete) {
+                if (isComplete) {
 
-
-        ApiRequest.Call_Api(context,Variables.sendPushNotification,notimap,null);
+                }
+            }
+        });
 
     }
 

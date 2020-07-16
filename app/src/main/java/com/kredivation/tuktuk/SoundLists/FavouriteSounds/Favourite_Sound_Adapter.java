@@ -60,8 +60,11 @@ class Favourite_Sound_Adapter extends RecyclerView.Adapter<Favourite_Sound_Adapt
 
             holder.sound_name.setText(datalist.get(i).sound_name);
             holder.description_txt.setText(datalist.get(i).description);
-            Picasso.with(context).load(datalist.get(i).thum)
-                    .into(holder.sound_image);
+            if(!datalist.get(i).thum.equals("")) {
+                Picasso.with(context).load(datalist.get(i).thum)
+                        .into(holder.sound_image);
+            }
+
             holder.bind(i, datalist.get(i), listener);
 
            /* if(SoundList_A.running_sound_id.equals(datalist.get(i).id)){

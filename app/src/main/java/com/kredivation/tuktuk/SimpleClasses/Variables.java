@@ -62,8 +62,7 @@ public class Variables {
     public static SimpleDateFormat df =
             new SimpleDateFormat("dd-MM-yyyy HH:mm:ssZZ", Locale.ENGLISH);
 
-    public static SimpleDateFormat df2 =
-            new SimpleDateFormat("dd-MM-yyyy HH:mmZZ", Locale.ENGLISH);
+    public static SimpleDateFormat df2 =new SimpleDateFormat("dd-MM-yyyy HH:mmZZ", Locale.ENGLISH);
 
 
 
@@ -81,7 +80,7 @@ public class Variables {
 
 
     
-    public static String gif_api_key1="giphy_api_key_here";
+    public static String gif_api_key1="4Iq9SeDWa9YCZy9whmkbfp2gDBRLUDat";
 
 
     public static String privacy_policy="https://www.termsfeed.com/privacy-policy/4dec1a564a01ea0d15ed86c97c4e8253";
@@ -133,6 +132,13 @@ public class Variables {
     public static String edit_profileNew=base_url+"EditProfile.php";
     public static String get_user_dataNew=base_url+"getUserData.php";
     public static String uploadImageNew=base_url+"UploadImage.php";
+    public static String allSoundsNew=base_url+"allSounds.php";
+    public static String fav_soundNew=base_url+"fav_sound.php";
+    public static String my_FavSoundNew=base_url+"myFavSound.php";
+    public static String uploadVideoNew =base_url+"uploadVideo.php";
+    public static String updateVideoViewNew=base_url+"updateVideoView.php";
+    public static String reportPost =base_url+"reportPost.php";
+
 
     public static final String OFFLINE_MESSAGE = "Oops! You are Offline. Please check your Internet Connection.";
 

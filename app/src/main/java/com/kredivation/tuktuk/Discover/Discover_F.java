@@ -139,7 +139,6 @@ public class Discover_F extends RootFragment {
             e.printStackTrace();
         }
 
-        Log.d("resp",parameters.toString());
 
        /* ApiRequest.Call_Api(context, Variables.discover, parameters, new Callback() {
             @Override

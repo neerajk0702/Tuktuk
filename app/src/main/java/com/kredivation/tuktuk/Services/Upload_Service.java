@@ -197,7 +197,7 @@ public class Upload_Service extends Service{
 
             RequestQueue rq = Volley.newRequestQueue(Upload_Service.this);
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.POST, Variables.uploadVideo, parameters, new Response.Listener<JSONObject>() {
+                    (Request.Method.POST, Variables.uploadVideoNew, parameters, new Response.Listener<JSONObject>() {
 
                         @Override
                         public void onResponse(JSONObject response) {

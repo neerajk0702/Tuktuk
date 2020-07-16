@@ -53,6 +53,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import com.kredivation.tuktuk.R;
+import com.kredivation.tuktuk.Utility;
+import com.kredivation.tuktuk.framework.IAsyncWorkCompletedCallback;
+import com.kredivation.tuktuk.framework.ServiceCaller;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -168,15 +171,26 @@ public class Discover_SoundList_F extends RootFragment implements Player.EventLi
             e.printStackTrace();
         }
 
-        Log.d("resp",parameters.toString());
-
-        ApiRequest.Call_Api(context, Variables.allSounds, parameters, new Callback() {
+      /*  ApiRequest.Call_Api(context, Variables.allSounds, parameters, new Callback() {
             @Override
             public void Responce(String resp) {
                 swiperefresh.setRefreshing(false);
                 Parse_data(resp);
             }
-        });
+        });*/
+
+        if (Utility.isOnline(getActivity())) {
+            ServiceCaller serviceCaller = new ServiceCaller(getActivity());
+            serviceCaller.CallCommanServiceMethod(Variables.allSoundsNew, parameters, "Call_Api_For_get_allsound", new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String result, boolean isComplete) {
+                    swiperefresh.setRefreshing(false);
+                    Parse_data(result);
+                }
+            });
+        } else {
+            Toast.makeText(context, Variables.OFFLINE_MESSAGE, Toast.LENGTH_SHORT).show();
+        }
 
 
     }
@@ -433,16 +447,29 @@ public class Discover_SoundList_F extends RootFragment implements Player.EventLi
         try {
             parameters.put("fb_id", Variables.sharedPreferences.getString(Variables.u_id,"0"));
             parameters.put("sound_id",video_id);
+            parameters.put("action",1);//1 for fav sound
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        ApiRequest.Call_Api(context, Variables.fav_sound, parameters, new Callback() {
+        /*ApiRequest.Call_Api(context, Variables.fav_sound, parameters, new Callback() {
             @Override
             public void Responce(String resp) {
                 iosDialog.cancel();
             }
-        });
+        });*/
+        if (Utility.isOnline(getActivity())) {
+            ServiceCaller serviceCaller = new ServiceCaller(getActivity());
+            serviceCaller.CallCommanServiceMethod(Variables.fav_soundNew, parameters, "Call_Api_For_Fav_sound", new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String result, boolean isComplete) {
+                    iosDialog.cancel();
+                }
+            });
+        } else {
+            Toast.makeText(context, Variables.OFFLINE_MESSAGE, Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 

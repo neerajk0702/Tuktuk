@@ -652,6 +652,7 @@ public class WatchVideos_NN extends AppCompatActivity implements Player.EventLis
         Animation aniRotate = AnimationUtils.loadAnimation(context, R.anim.d_clockwise_rotation);
         soundimage.startAnimation(aniRotate);
 
+            //update video view after login
         if (Variables.sharedPreferences.getBoolean(Variables.islogin, false))
             Functions.Call_Api_For_update_view(WatchVideos_NN.this, item.video_id);
 

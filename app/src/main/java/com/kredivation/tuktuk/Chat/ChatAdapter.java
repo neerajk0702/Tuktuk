@@ -145,9 +145,9 @@ class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // check if the message is from sender or receiver
             if(chat.getSender_id().equals(myID)){
                 if(chat.getStatus().equals("1"))
-                    chatviewholder.message_seen.setText("Seen at "+ChangeDate_to_time(chat.getTime()));
+                    chatviewholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
                 else
-                    chatviewholder.message_seen.setText("Sent");
+                    chatviewholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
 
             }else {
                 chatviewholder.message_seen.setText("");
@@ -178,9 +178,9 @@ class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             // check if the message is from sender or receiver
             if(chat.getSender_id().equals(myID)){
                 if(chat.getStatus().equals("1"))
-                    chatimageholder.message_seen.setText("Seen at "+ChangeDate_to_time(chat.getTime()));
+                    chatimageholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
                 else
-                    chatimageholder.message_seen.setText("Sent");
+                    chatimageholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
 
             }else {
                 chatimageholder.message_seen.setText("");
@@ -228,9 +228,9 @@ class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             // check if the message is from sender or receiver
             if(chat.getSender_id().equals(myID)){
                 if(chat.getStatus().equals("1"))
-                    chataudioviewholder.message_seen.setText("Seen at "+ChangeDate_to_time(chat.getTime()));
+                    chataudioviewholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
                 else
-                    chataudioviewholder.message_seen.setText("Sent");
+                    chataudioviewholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
 
             }else {
                 chataudioviewholder.message_seen.setText("");
@@ -293,9 +293,9 @@ class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             // check if the message is from sender or receiver
             if(chat.getSender_id().equals(myID)){
                 if(chat.getStatus().equals("1"))
-                chatimageholder.message_seen.setText("Seen at "+ChangeDate_to_time(chat.getTime()));
+                chatimageholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
                 else
-                    chatimageholder.message_seen.setText("Sent");
+                    chatimageholder.message_seen.setText(ChangeDate_to_time(chat.getTime()));
 
             }else {
                 chatimageholder.message_seen.setText("");
@@ -559,13 +559,8 @@ class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return sdf.format(d);
         }
         catch (Exception e){
-
-        }
-        finally {
-
             return "";
         }
-
     }
 
 
@@ -584,8 +579,6 @@ class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
            return sdf.format(d);
        }catch (Exception e){
-
-       }finally {
            return "";
        }
 

@@ -586,6 +586,7 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
         Animation sound_animation = AnimationUtils.loadAnimation(context, R.anim.d_clockwise_rotation);
         soundimage.startAnimation(sound_animation);
 
+        //update video view after login
         if (Variables.sharedPreferences.getBoolean(Variables.islogin, false))
             Functions.Call_Api_For_update_view(getActivity(), item.video_id);
 
