@@ -458,9 +458,6 @@ LinearLayout tabView;
     }
 
     public void Onother_Tab_Click(){
-
-
-
         TabLayout.Tab tab1=tabLayout.getTabAt(1);
         View view1=tab1.getCustomView();
         TextView tex1=view1.findViewById(R.id.text);
