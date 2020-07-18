@@ -128,7 +128,7 @@ int reportTypeID=0;
         ReportData data5= new ReportData();
         data5.setId(5);
         data5.setReport("Violence or Harm");
-        data_list.add(data);
+        data_list.add(data5);
         ReportData data6= new ReportData();
         data6.setId(6);
         data6.setReport("Hat Speech");
