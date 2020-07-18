@@ -128,7 +128,7 @@ public class Home_Adapter extends RecyclerView.Adapter<Home_Adapter.CustomViewHo
         TextView username,desc_txt,sound_name;
         ImageView user_pic,sound_image;
 
-        LinearLayout like_layout,comment_layout,shared_layout,sound_image_layout;
+        LinearLayout like_layout,comment_layout,shared_layout,sound_image_layout,alert_layout;
         ImageView like_image,comment_image;
         TextView like_txt,comment_txt;
 
@@ -157,6 +157,7 @@ public class Home_Adapter extends RecyclerView.Adapter<Home_Adapter.CustomViewHo
 
             sound_image_layout=view.findViewById(R.id.sound_image_layout);
             shared_layout=view.findViewById(R.id.shared_layout);
+            alert_layout=view.findViewById(R.id.alert_layout);
         }
 
         public void bind(final int postion,final Home_Get_Set item, final Home_Adapter.OnItemClickListener listener) {
@@ -217,7 +218,13 @@ public class Home_Adapter extends RecyclerView.Adapter<Home_Adapter.CustomViewHo
                     listener.onItemClick(postion,item,v);
                 }
             });
+            alert_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    listener.onItemClick(postion,item,v);
+                }
+            });
 
         }
 

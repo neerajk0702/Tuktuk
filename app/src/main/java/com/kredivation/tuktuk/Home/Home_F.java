@@ -82,6 +82,7 @@ import com.kredivation.tuktuk.Utility;
 import com.kredivation.tuktuk.VideoAction.VideoAction_F;
 import com.kredivation.tuktuk.framework.IAsyncWorkCompletedCallback;
 import com.kredivation.tuktuk.framework.ServiceCaller;
+import com.kredivation.tuktuk.report.ReportPost_F;
 import com.volokh.danylo.hashtaghelper.HashTagHelper;
 
 import org.json.JSONArray;
@@ -274,6 +275,9 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
                             Toast.makeText(context, "Please Login.", Toast.LENGTH_SHORT).show();
                         }
 
+                        break;
+                    case R.id.alert_layout:
+                        OpenReportPost(item);
                         break;
                 }
 
@@ -763,8 +767,21 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
         comment_f.setArguments(args);
         transaction.addToBackStack(null);
         transaction.replace(R.id.MainMenuFragment, comment_f).commit();
+    }
 
+    // this will open the report screen
+    private void OpenReportPost(Home_Get_Set item) {
+        Fragment_Data_Send fragment_data_send = this;
 
+        ReportPost_F report_f = new ReportPost_F(fragment_data_send);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.in_from_bottom, R.anim.out_to_top, R.anim.in_from_top, R.anim.out_from_bottom);
+        Bundle args = new Bundle();
+        args.putString("video_id", item.video_id);
+        args.putString("user_id", item.fb_id);
+        report_f.setArguments(args);
+        transaction.addToBackStack(null);
+        transaction.replace(R.id.MainMenuFragment, report_f).commit();
     }
 
     // this will open the profile of user which have uploaded the currenlty running video

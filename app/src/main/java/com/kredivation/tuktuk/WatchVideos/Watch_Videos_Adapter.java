@@ -123,7 +123,7 @@ public class Watch_Videos_Adapter extends RecyclerView.Adapter<Watch_Videos_Adap
         TextView username,sound_name;
         ImageView user_pic,sound_image;
 
-        LinearLayout like_layout,comment_layout,shared_layout,sound_image_layout;
+        LinearLayout like_layout,comment_layout,shared_layout,sound_image_layout,alert_layout;
         ImageView like_image,comment_image;
         TextView like_txt,desc_txt,comment_txt;
 
@@ -154,6 +154,7 @@ public class Watch_Videos_Adapter extends RecyclerView.Adapter<Watch_Videos_Adap
 
             sound_image_layout=view.findViewById(R.id.sound_image_layout);
             shared_layout=view.findViewById(R.id.shared_layout);
+            alert_layout=view.findViewById(R.id.alert_layout);
         }
 
         public void bind(final int postion,final Home_Get_Set item, final Watch_Videos_Adapter.OnItemClickListener listener) {
@@ -213,7 +214,12 @@ public class Watch_Videos_Adapter extends RecyclerView.Adapter<Watch_Videos_Adap
                     listener.onItemClick(postion,item,v);
                 }
             });
-
+            alert_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(postion,item,v);
+                }
+            });
 
         }
 
