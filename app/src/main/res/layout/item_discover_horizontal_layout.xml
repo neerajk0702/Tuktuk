@@ -5,10 +5,10 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/_150dp"
         android:scaleType="centerCrop"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="@dimen/_5dp"
+        android:layout_marginRight="@dimen/_5dp"
         android:id="@+id/video_thumbnail"/>
 
 </FrameLayout>

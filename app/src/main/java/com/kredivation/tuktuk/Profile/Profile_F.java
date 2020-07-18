@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -58,6 +59,7 @@ public class Profile_F extends RootFragment implements View.OnClickListener {
 
 
    public  TextView follow_unfollow_btn;
+   CardView follow_unfollow_btnView;
    public  TextView username,video_count_txt;
    public  ImageView imageView;
    public  TextView follow_count_txt,fans_count_txt,heart_count_txt;
@@ -175,6 +177,7 @@ public class Profile_F extends RootFragment implements View.OnClickListener {
         back_btn.setOnClickListener(this);
 
         follow_unfollow_btn=view.findViewById(R.id.follow_unfollow_btn);
+        follow_unfollow_btnView=view.findViewById(R.id.follow_unfollow_btnView);
         follow_unfollow_btn.setOnClickListener(this);
 
 
@@ -456,6 +459,7 @@ public class Profile_F extends RootFragment implements View.OnClickListener {
                 if(!data.optString("fb_id").equals(Variables.sharedPreferences.getString(Variables.u_id,""))) {
 
                     follow_unfollow_btn.setVisibility(View.VISIBLE);
+                    follow_unfollow_btnView.setVisibility(View.VISIBLE);
                     JSONObject follow_Status = data.optJSONObject("follow_Status");
                     follow_unfollow_btn.setText(follow_Status.optString("follow_status_button"));
                     follow_status=follow_Status.optString("follow");

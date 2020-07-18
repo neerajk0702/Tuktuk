@@ -1,15 +1,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainMenuFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/MainMenuFragment"
-    android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/white">
 
 
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <com.kredivation.tuktuk.Main_Menu.Custom_ViewPager
@@ -18,33 +18,41 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+        <LinearLayout
+            android:id="@+id/tabView"
+            android:layout_width="match_parent"
+            android:background="@drawable/round_ransparent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
 
-       <com.google.android.material.tabs.TabLayout
-           android:id="@+id/tabs"
-           android:layout_weight="1"
-           android:layout_height="48dp"
-           android:layout_width="match_parent"
-           app:tabMode="fixed"
-           app:tabSelectedTextColor="@color/black"
-           android:gravity="center"
-           app:tabGravity="fill"
-           app:tabPaddingStart="0dp"
-           app:tabPaddingEnd="0dp"
-           android:elevation="5dp"
-           app:tabTextColor="@color/dimgray"
-           app:tabTextAppearance="@style/Base.TextAppearance.AppCompat.Small"
-           android:layout_marginLeft="-1dp"
-           android:background="@drawable/d_top_white_line"
-           app:tabIndicatorColor="@color/transparent"
-           android:layout_alignParentBottom="true"/>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="-1dp"
+                android:layout_weight="1"
+                android:background="@drawable/d_top_white_line"
+                android:elevation="5dp"
+                android:gravity="center"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/transparent"
+                app:tabMode="fixed"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                app:tabTextColor="@color/dimgray" />
+        </LinearLayout>
 
-       <ImageView
-           android:layout_width="match_parent"
-           android:layout_height="48dp"
-           android:scaleType="fitXY"
-           android:src="@drawable/black_gradient"
-           android:layout_alignParentBottom="true"/>
 
-   </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/black_gradient" />
+
+    </RelativeLayout>
 
 </FrameLayout>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/WatchVideo_F"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:id="@+id/WatchVideo_F"
     android:clickable="true"
     tools:context="com.kredivation.tuktuk.Home.Home_F">
 
@@ -14,23 +15,23 @@
         android:background="@color/black">
 
 
-      <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recylerview"
-        android:background="@color/black"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
 
 
         <ImageButton
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:id="@+id/Goback"
+            android:layout_width="@dimen/_32dp"
+            android:layout_height="@dimen/_32dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
-            android:id="@+id/Goback"
-            android:scaleType="fitCenter"
             android:background="@color/transparent"
-            android:tint="@color/white"
-            android:src="@drawable/ic_back"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_back"
+            android:tint="@color/white" />
 
         <ProgressBar
             android:id="@+id/p_bar"
@@ -40,75 +41,86 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="43dp"
             android:indeterminateOnly="true"
-            android:visibility="visible"
             android:indeterminateTint="@color/white"
-            android:secondaryProgress="@android:integer/config_shortAnimTime"/>
+            android:secondaryProgress="@android:integer/config_shortAnimTime"
+            android:visibility="visible" />
 
 
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:id="@+id/write_layout">
-
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/black_gradient"
-                android:layout_alignParentBottom="true"/>
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Leave a comment..."
-                android:textSize="14dp"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/message_edit"
-                android:textColorHint="@color/colorwhite_50"
-                android:textColor="@color/white"
-                android:layout_toLeftOf="@+id/send_btn_layout"
-                android:backgroundTint="@color/transparent"/>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/send_btn_layout"
-                android:layout_marginRight="10dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true">
+                app:cardCornerRadius="@dimen/_10dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="@dimen/_5dp"
+                android:padding="@dimen/_5dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_alignParentBottom="true">
 
 
-                <ImageButton
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:id="@+id/send_btn"
-                    android:padding="5dp"
-                    android:rotation="-45"
-                    android:scaleType="fitCenter"
-                    android:tint="@color/white"
-                    android:background="@color/transparent"
-                    android:src="@drawable/ic_send"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
 
-                <ProgressBar
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:visibility="gone"
-                    android:padding="5dp"
-                    android:theme="@style/white_progressbar"
-                    android:id="@+id/send_progress"/>
+                    <RelativeLayout
+                        android:id="@+id/write_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp">
 
-            </RelativeLayout>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_alignParentBottom="true"
+                            android:scaleType="fitXY" />
 
-        </RelativeLayout>
 
-        </RelativeLayout>
+                        <EditText
+                            android:id="@+id/message_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toLeftOf="@+id/send_btn_layout"
+                            android:backgroundTint="@color/transparent"
+                            android:hint="Leave a comment..."
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/redcolor"
+                            android:textSize="14dp" />
+
+                        <RelativeLayout
+                            android:id="@+id/send_btn_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp">
+
+
+                            <ImageButton
+                                android:id="@+id/send_btn"
+                                android:layout_width="@dimen/_45dp"
+                                android:layout_height="@dimen/_45dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_send"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/send_progress"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:padding="5dp"
+                                android:theme="@style/white_progressbar"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
 
     </RelativeLayout>
 

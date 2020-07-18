@@ -45,7 +45,7 @@ public class MainMenuFragment extends RootFragment implements View.OnClickListen
 
     private ViewPagerAdapter adapter;
     Context context;
-
+LinearLayout tabView;
 
     public MainMenuFragment() {
 
@@ -60,6 +60,7 @@ public class MainMenuFragment extends RootFragment implements View.OnClickListen
         context=getContext();
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         pager = view.findViewById(R.id.viewpager);
+        tabView= view.findViewById(R.id.tabView);
         pager.setOffscreenPageLimit(5);
         pager.setPagingEnabled(false);
         view.setOnClickListener(this);
@@ -430,7 +431,7 @@ public class MainMenuFragment extends RootFragment implements View.OnClickListen
         TabLayout.Tab tab2=tabLayout.getTabAt(2);
         View view2=tab2.getCustomView();
         ImageView image= view2.findViewById(R.id.image);
-        image.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_add_white));
+        image.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_recoedvideo));
         tab2.setCustomView(view2);
 
         TabLayout.Tab tab3=tabLayout.getTabAt(3);
@@ -471,7 +472,7 @@ public class MainMenuFragment extends RootFragment implements View.OnClickListen
         TabLayout.Tab tab2=tabLayout.getTabAt(2);
         View view2=tab2.getCustomView();
         ImageView image= view2.findViewById(R.id.image);
-        image.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_add_black));
+        image.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_recodvideo_gry));
         tab2.setCustomView(view2);
 
         TabLayout.Tab tab3=tabLayout.getTabAt(3);

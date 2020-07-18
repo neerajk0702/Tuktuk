@@ -38,6 +38,8 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity android:name="com.kredivation.tuktuk.SoundLists.VideoSound_A"></activity>
+        <activity android:name=".Accounts.NameRegisterActivity"/>
+        <activity android:name=".Accounts.OTPActivity"/>
 
         <activity
             android:name="com.kredivation.tuktuk.Video_Recording.GalleryVideos.GalleryVideos_A"

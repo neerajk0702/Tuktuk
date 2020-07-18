@@ -16,7 +16,8 @@
         android:padding="3dp"
         app:gpuimage_show_loading="false"
         app:gpuimage_surface_type="texture_view"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/filter_txt"
@@ -28,6 +29,7 @@
         android:textSize="10sp"
         android:maxLines="2"
         app:layout_constraintTop_toBottomOf="@id/iv_photo"
-        tools:text="Filter name" />
+        tools:text="Filter name"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

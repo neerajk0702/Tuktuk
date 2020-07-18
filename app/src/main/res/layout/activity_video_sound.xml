@@ -49,17 +49,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="@dimen/_15dp">
 
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/sound_image"
-                    android:layout_width="120dp"
-                    android:layout_height="150dp"
+                    android:layout_width="@dimen/_110dp"
+                    android:layout_height="@dimen/_110dp"
                     android:scaleType="centerCrop"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="@dimen/_10dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginBottom="@dimen/_15dp"
                     android:src="@color/colorAccent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +67,8 @@
 
                 <ImageButton
                     android:id="@+id/play_btn"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="@dimen/_35dp"
+                    android:layout_height="@dimen/_35dp"
                     android:layout_centerInParent="true"
                     android:background="@color/transparent"
                     android:scaleType="fitCenter"
@@ -157,23 +157,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="@dimen/_50dp"
                 android:layout_alignParentBottom="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_50dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_margin="@dimen/_8dp"
                     android:id="@+id/save_btn"
                     android:background="@drawable/d_round_gray25"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="@dimen/_45dp"
+                        android:layout_height="@dimen/_45dp"
                         android:background="@color/transparent"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_my_favourite" />
@@ -182,27 +181,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Save"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_10dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/_14dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_50dp"
                     android:layout_weight="1"
+                    android:layout_margin="@dimen/_8dp"
                     android:gravity="center"
                     android:background="@drawable/d_round_red25"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
                     android:id="@+id/create_btn"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="@dimen/_35dp"
+                        android:layout_height="@dimen/_35dp"
                         android:background="@color/transparent"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_video" />
@@ -211,9 +209,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Create"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/_10dp"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/_14dp"
                         android:textStyle="bold"/>
 
                 </LinearLayout>

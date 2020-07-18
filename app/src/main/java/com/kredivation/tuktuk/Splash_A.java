@@ -12,12 +12,18 @@ import com.kredivation.tuktuk.Main_Menu.MainMenuActivity;
 import com.kredivation.tuktuk.SimpleClasses.Variables;
 
 import com.kredivation.tuktuk.R;
+import com.kredivation.tuktuk.update.Constants;
+import com.kredivation.tuktuk.update.InAppUpdateManager;
 
 
 public class Splash_A extends AppCompatActivity {
 
 
     CountDownTimer countDownTimer;
+
+    private static final int REQ_CODE_VERSION_UPDATE = 530;
+    private static final String TAG = "SplashScreenActivity";
+    private InAppUpdateManager inAppUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +44,9 @@ public class Splash_A extends AppCompatActivity {
 
             public void onFinish() {
 
-                Intent intent=new Intent(Splash_A.this, MainMenuActivity.class);
+                Intent intent = new Intent(Splash_A.this, MainMenuActivity.class);
 
-                if(getIntent().getExtras()!=null) {
+                if (getIntent().getExtras() != null) {
                     intent.putExtras(getIntent().getExtras());
                     setIntent(null);
                 }
@@ -53,7 +59,11 @@ public class Splash_A extends AppCompatActivity {
         }.start();
 
 
+        inAppUpdateManager = InAppUpdateManager.Builder(this, REQ_CODE_VERSION_UPDATE)
+                .resumeUpdates(true) // Resume the update, if the update was stalled. Default is true
+                .mode(Constants.UpdateMode.IMMEDIATE);
 
+        inAppUpdateManager.checkForAppUpdate();
     }
 
     @Override

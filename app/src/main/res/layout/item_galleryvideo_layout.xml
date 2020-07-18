@@ -5,7 +5,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/_150dp"
         android:id="@+id/thumb_image"
         android:layout_margin="1dp"
         android:scaleType="centerCrop"/>
@@ -13,9 +13,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="5dp"
+        android:layout_height="@dimen/_30dp"
+        android:paddingLeft="@dimen/_10dp"
+        android:paddingBottom="@dimen/_5dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@drawable/black_gradient"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/view_txt"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="@dimen/_5dp"
         android:shadowColor="@color/darkgray"
         android:shadowDx="2"
         android:shadowDy="2"

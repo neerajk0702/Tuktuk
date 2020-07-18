@@ -5,7 +5,7 @@
     android:id="@+id/mainlayout"
     android:gravity="bottom"
     android:paddingTop="24dp"
-    android:background="@color/maincolor">
+    android:background="@color/app_color">
 
 
     <RelativeLayout
@@ -18,8 +18,8 @@
         android:layout_centerVertical="true">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="@dimen/_55dp"
+            android:layout_height="@dimen/_55dp"
             android:layout_centerVertical="true"
             android:src="@drawable/profile_image_placeholder"
             android:id="@+id/user_image"/>
@@ -39,11 +39,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/_15dp"
                     android:id="@+id/username"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginLeft="@dimen/_10dp" />
 
             </RelativeLayout>
 
@@ -52,11 +52,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/message"
                 android:text="Your Message"
-                android:textSize="13dp"
+                android:textSize="@dimen/_13dp"
                 android:maxLines="2"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/_5dp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/_10dp"
 
                 />
         </LinearLayout>
