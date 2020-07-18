@@ -517,7 +517,6 @@ LinearLayout tabView;
         if (!hasPermissions(context, PERMISSIONS)) {
             requestPermissions(PERMISSIONS, 2);
         }else {
-
             return true;
         }
 
