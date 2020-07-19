@@ -1,95 +1,104 @@
 package com.kredivation.tuktuk.report;
 
-import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.kredivation.tuktuk.Comments.Comment_Get_Set;
 import com.kredivation.tuktuk.R;
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
-public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.CustomViewHolder> {
-
-    public Context context;
-    private ReportAdapter.OnItemClickListener listener;
-    private ArrayList<ReportData> dataList;
+import java.util.List;
 
 
-    // meker the onitemclick listener interface and this interface is impliment in Chatinbox activity
-    // for to do action when user click on item
-    public interface OnItemClickListener {
-        void onItemClick(int positon, ReportData item, View view);
-    }
+public class ReportAdapter extends RecyclerView.Adapter implements SelectableViewHolder.OnItemSelectedListener {
 
-    public ReportAdapter(Context context, ArrayList<ReportData> dataList, ReportAdapter.OnItemClickListener listener) {
-        this.context = context;
-        this.dataList = dataList;
+    private final List<SelectableReport> mValues;
+    private boolean isMultiSelectionEnabled = false;
+    SelectableViewHolder.OnItemSelectedListener listener;
+
+
+    public ReportAdapter(SelectableViewHolder.OnItemSelectedListener listener,
+                         List<ReportData> items, boolean isMultiSelectionEnabled) {
         this.listener = listener;
+        this.isMultiSelectionEnabled = isMultiSelectionEnabled;
 
+        mValues = new ArrayList<>();
+        for (ReportData item : items) {
+            mValues.add(new SelectableReport(item, false));
+        }
     }
 
     @Override
-    public ReportAdapter.CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewtype) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_report, null);
-        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
-        ReportAdapter.CustomViewHolder viewHolder = new ReportAdapter.CustomViewHolder(view);
-        return viewHolder;
+    public SelectableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_report, parent, false);
+
+        return new SelectableViewHolder(itemView, this);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+
+        SelectableViewHolder holder = (SelectableViewHolder) viewHolder;
+        SelectableReport selectableItem = mValues.get(position);
+        String name = selectableItem.getReport();
+        holder.textView.setText(name);
+        if (isMultiSelectionEnabled) {
+            TypedValue value = new TypedValue();
+            holder.textView.getContext().getTheme().resolveAttribute(android.R.attr.listChoiceIndicatorMultiple, value, true);
+            int checkMarkDrawableResId = value.resourceId;
+            holder.textView.setCheckMarkDrawable(checkMarkDrawableResId);
+        } else {
+           TypedValue value = new TypedValue();
+            holder.textView.getContext().getTheme().resolveAttribute(android.R.attr.listChoiceIndicatorSingle, value, true);
+           // int checkMarkDrawableResId = value.resourceId;
+            holder.textView.setCheckMarkDrawable(R.drawable.check_box_drawable);
+        }
+
+        holder.mItem = selectableItem;
+        holder.setChecked(holder.mItem.isSelected());
     }
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return mValues.size();
     }
 
+    public List<ReportData> getSelectedItems() {
+        List<ReportData> selectedItems = new ArrayList<>();
+        for (SelectableReport item : mValues) {
+            if (item.isSelected()) {
+                selectedItems.add(item);
+            }
+        }
+        return selectedItems;
+    }
 
     @Override
-    public void onBindViewHolder(final ReportAdapter.CustomViewHolder holder, final int i) {
-        holder.reporttext.setText(dataList.get(i).getReport());
-        holder.bind(i, dataList.get(i), listener);
-        if(dataList.get(i).isSelect()){
-            holder.report.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_donenew));
-        }else {
-            holder.report.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_uncheckbox));
+    public int getItemViewType(int position) {
+        if (isMultiSelectionEnabled) {
+            return SelectableViewHolder.MULTI_SELECTION;
+        } else {
+            return SelectableViewHolder.SINGLE_SELECTION;
         }
-
     }
 
+    @Override
+    public void onItemSelected(SelectableReport item) {
+        if (!isMultiSelectionEnabled) {
 
-    class CustomViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView report;
-        TextView reporttext;
-
-
-        public CustomViewHolder(View view) {
-            super(view);
-
-            report = view.findViewById(R.id.report);
-            reporttext=view.findViewById(R.id.reporttext);
-
-        }
-
-        public void bind(final int postion, final ReportData item, final ReportAdapter.OnItemClickListener listener) {
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(postion, item, v);
+            for (SelectableReport selectableItem : mValues) {
+                if (!selectableItem.equals(item)
+                        && selectableItem.isSelected()) {
+                    selectableItem.setSelected(false);
+                } else if (selectableItem.equals(item)
+                        && item.isSelected()) {
+                    selectableItem.setSelected(true);
                 }
-            });
-
+            }
+            notifyDataSetChanged();
         }
-
-
+        listener.onItemSelected(item);
     }
 
 }

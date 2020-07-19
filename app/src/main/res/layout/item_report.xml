@@ -19,28 +19,43 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
 
-        <LinearLayout
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             <ImageView
+                 android:id="@+id/report"
+                 android:layout_width="25dp"
+                 android:layout_height="25dp"
+                 android:src="@drawable/ic_uncheckbox" />
+
+             <TextView android:id="@+id/reporttext"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_marginLeft="10dp"
+                 android:text="Username"
+                 android:layout_marginTop="5dp"
+                 android:textColor="@color/black"
+                 android:textSize="13dp"
+                 android:textStyle="bold"
+                 android:visibility="visible" />
+         </LinearLayout>-->
+
+        <CheckedTextView
+            android:id="@+id/checked_text_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/report"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_uncheckbox" />
-
-            <TextView android:id="@+id/reporttext"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:text="Username"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:visibility="visible" />
-        </LinearLayout>
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/_2dp"
+            android:paddingTop="@dimen/_5dp"
+            android:paddingRight="@dimen/_10dp"
+            android:paddingBottom="@dimen/_5dp"
+            android:text="ssadsadsds"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14dp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
