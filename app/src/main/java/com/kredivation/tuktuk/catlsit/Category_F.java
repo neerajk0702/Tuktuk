@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,8 +32,6 @@ public class Category_F extends RootFragment {
     String user_id;
 
 
-    FrameLayout comment_screen;
-
     public Category_F() {
 
     }
@@ -44,34 +43,16 @@ public class Category_F extends RootFragment {
         this.fragment_data_send = fragment_data_send;
     }
 
-    int reportTypeID = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_reportpost, container, false);
+        view = inflater.inflate(R.layout.fragment_category, container, false);
         context = getContext();
 
 
-        comment_screen = view.findViewById(R.id.comment_screen);
-        comment_screen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                getActivity().onBackPressed();
-
-            }
-        });
-
         view.findViewById(R.id.Goback).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                getActivity().onBackPressed();
-            }
-        });
-        view.findViewById(R.id.cancel_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -86,9 +67,9 @@ public class Category_F extends RootFragment {
         }
 
         recyclerView = view.findViewById(R.id.recylerview);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        final GridLayoutManager layoutManager = new GridLayoutManager(context,2);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
 
 
         data_list = new ArrayList<CateData>();
@@ -121,6 +102,35 @@ public class Category_F extends RootFragment {
         data7.setCatName("Des Bhakti Video");
         data_list.add(data7);
 
+
+
+        CateData data8 = new CateData();
+        data8.setId(8);
+        data8.setCatName("Des Bhakti Video");
+        data_list.add(data8);
+
+
+        CateData data9 = new CateData();
+        data9.setId(9);
+        data9.setCatName("Des Bhakti Video");
+        data_list.add(data9);
+
+
+        CateData data10 = new CateData();
+        data10.setId(10);
+        data10.setCatName("Sad Video");
+        data_list.add(data10);
+
+        CateData data11 = new CateData();
+        data11.setId(11);
+        data11.setCatName("Love  Video");
+        data_list.add(data11);
+
+        CateData data12 = new CateData();
+        data12.setId(12);
+        data12.setCatName("Bhakti Video");
+        data_list.add(data12);
+
      /*   adapter = new ReportAdapter(context, data_list, new ReportAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int postion, CateData item, View view) {
@@ -148,7 +158,6 @@ public class Category_F extends RootFragment {
     @Override
     public void onDetach() {
         Functions.hideSoftKeyboard(getActivity());
-
         super.onDetach();
     }
 

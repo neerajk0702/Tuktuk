@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainlayout"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_110dp"
+    android:layout_height="@dimen/_130dp"
+    app:cardBackgroundColor="@color/white"
     android:layout_centerInParent="true"
     android:layout_gravity="center"
     android:layout_margin="@dimen/_5dp"
-    android:padding="@dimen/_10dp"
     app:cardCornerRadius="@dimen/_20dp"
     app:cardElevation="@dimen/_8dp"
     app:cardUseCompatPadding="true">
@@ -19,13 +19,15 @@
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:gravity="center"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/_40dp"
             android:layout_height="@dimen/_40dp"
             android:layout_margin="@dimen/_5dp"
-            android:src="@drawable/ic_image_icon"
+            android:padding="@dimen/_5dp"
+            android:src="@drawable/exo_notification_small_icon"
             android:tint="@color/ios_gray_text" />
 
 
@@ -33,13 +35,12 @@
             android:id="@+id/catName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10dp"
+            android:layout_marginLeft="@dimen/_5dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center_vertical"
-            android:text="Funny "
             android:textColor="@color/black"
-            android:textSize="@dimen/_16dp"
+            android:textSize="@dimen/_14dp"
             android:textStyle="bold" />
 
     </LinearLayout>

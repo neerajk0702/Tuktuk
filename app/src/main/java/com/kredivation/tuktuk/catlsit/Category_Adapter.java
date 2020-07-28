@@ -45,13 +45,13 @@ public class Category_Adapter extends RecyclerView.Adapter<Category_Adapter.Cust
 
         RecyclerView horizontal_reycerview;
 
-        TextView title;
+        TextView catName;
 
         public CustomViewHolder(View view) {
             super(view);
 
             horizontal_reycerview = view.findViewById(R.id.horizontal_recylerview);
-            title = view.findViewById(R.id.title);
+            catName = view.findViewById(R.id.catName);
         }
 
 
@@ -62,7 +62,7 @@ public class Category_Adapter extends RecyclerView.Adapter<Category_Adapter.Cust
     public void onBindViewHolder(final Category_Adapter.CustomViewHolder holder, final int i) {
 
         CateData item = datalist_filter.get(i);
-        holder.title.setText(item.getCatName());
+        holder.catName.setText(item.getCatName());
 
 
     }
