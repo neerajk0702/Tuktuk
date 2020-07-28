@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.kredivation.tuktuk.SoundLists.VideoSound_A">
 
     <RelativeLayout
@@ -12,39 +12,41 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_weight="1"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        android:background="@color/white">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/d_bottom_gray_line">
+
+                <ImageButton
+                    android:id="@+id/back_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/transparent"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/ic_back"
+                    android:tint="@color/black" />
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/d_bottom_gray_line">
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_back"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:scaleType="fitStart"
-                android:id="@+id/back_btn"
-                android:tint="@color/black"
-                android:background="@color/transparent"/>
-
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar">
+            android:layout_below="@+id/toolbar"
+            android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -56,10 +58,10 @@
                     android:id="@+id/sound_image"
                     android:layout_width="@dimen/_110dp"
                     android:layout_height="@dimen/_110dp"
-                    android:scaleType="centerCrop"
                     android:layout_marginStart="@dimen/_10dp"
                     android:layout_marginTop="@dimen/_10dp"
                     android:layout_marginBottom="@dimen/_15dp"
+                    android:scaleType="centerCrop"
                     android:src="@color/colorAccent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -82,11 +84,11 @@
                     android:id="@+id/pause_btn"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:visibility="gone"
                     android:layout_centerInParent="true"
                     android:background="@color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_pause_icon"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/sound_image"
                     app:layout_constraintEnd_toEndOf="@+id/sound_image"
                     app:layout_constraintStart_toStartOf="@+id/sound_image"
@@ -97,8 +99,8 @@
                     style="@style/SpinKitView.Large.Wave"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:visibility="gone"
                     android:layout_centerInParent="true"
+                    android:visibility="gone"
                     app:SpinKit_Color="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
                     app:layout_constraintEnd_toEndOf="@+id/sound_image"
@@ -111,10 +113,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
                     android:text="Name of the sounds"
                     android:textColor="@color/black"
                     android:textSize="14dp"
-                    android:layout_marginEnd="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/sound_image"
                     app:layout_constraintTop_toTopOf="@+id/sound_image" />
@@ -125,10 +127,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
                     android:text="Description"
                     android:textColor="@color/dimgray"
                     android:textSize="14dp"
-                    android:layout_marginEnd="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/sound_image"
                     app:layout_constraintTop_toBottomOf="@+id/sound_name" />
@@ -138,13 +140,13 @@
                     android:id="@+id/done"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:visibility="gone"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="8dp"
                     android:layout_toLeftOf="@+id/fav_btn"
                     android:background="@color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_select_rectangle"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/fav_btn"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -153,21 +155,20 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_50dp"
-                android:layout_alignParentBottom="true">
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/_50dp">
 
                 <LinearLayout
+                    android:id="@+id/save_btn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_margin="@dimen/_8dp"
-                    android:id="@+id/save_btn"
+                    android:layout_weight="1"
                     android:background="@drawable/d_round_gray25"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -180,22 +181,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Save"
                         android:layout_marginStart="@dimen/_10dp"
+                        android:text="Save"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:id="@+id/create_btn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50dp"
-                    android:layout_weight="1"
                     android:layout_margin="@dimen/_8dp"
-                    android:gravity="center"
+                    android:layout_weight="1"
                     android:background="@drawable/d_round_red25"
-                    android:id="@+id/create_btn"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -208,11 +209,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Create"
                         android:layout_marginStart="@dimen/_10dp"
+                        android:text="Create"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -221,6 +222,197 @@
 
 
         </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <!-- Container Type -->
+            <LinearLayout
+                android:id="@+id/containerTypeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Spinner
+                    android:id="@+id/containerSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/videoCodecContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <Spinner
+                    android:id="@+id/videoCodecSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fpsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Spinner
+                    android:id="@+id/fpsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <!-- Resolution -->
+            <LinearLayout
+                android:id="@+id/resolutionContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/resolutionCustomContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/resolutionContainer"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <EditText
+                    android:id="@+id/resolutionCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:hint="1920×1080" />
+
+            </RelativeLayout>
+
+
+            <!-- Video Bitrate -->
+            <LinearLayout
+                android:id="@+id/videoBitrateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bitrate" />
+
+                <EditText
+                    android:id="@+id/videoBitrateValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:inputType="number" />
+            </LinearLayout>
+
+
+            <!-- Audio Codec -->
+            <LinearLayout
+                android:id="@+id/audioCodecContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Spinner
+                    android:id="@+id/audioCodecSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+
+            <!-- Audio Bitrate -->
+            <LinearLayout
+                android:id="@+id/audioBitrateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Spinner
+                    android:id="@+id/audioBitrateSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+
+            <!-- Audio Sample Rate -->
+            <LinearLayout
+                android:id="@+id/audioSampleRateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Spinner
+                    android:id="@+id/audioSampleRateSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+
+            <!-- Audio Channel -->
+            <LinearLayout
+                android:id="@+id/audioChannelContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/channels" />
+
+                <Spinner
+                    android:id="@+id/audioChannelSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+
+            <Spinner
+                android:id="@+id/resolutionSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:gravity="end" />
+        </LinearLayout>
 
 
     </RelativeLayout>

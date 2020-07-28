@@ -263,7 +263,6 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
                         fragment.show(getChildFragmentManager(), "");
                         break;
 
-
                     case R.id.sound_image_layout:
                         if (Variables.sharedPreferences.getBoolean(Variables.islogin, false)) {
                             if (check_permissions()) {
@@ -274,6 +273,7 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
                         } else {
                             Toast.makeText(context, "Please Login.", Toast.LENGTH_SHORT).show();
                         }
+                  
 
                         break;
                     case R.id.alert_layout:

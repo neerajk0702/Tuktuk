@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Window;
 import android.view.WindowManager;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kredivation.tuktuk.Main_Menu.MainMenuActivity;
 import com.kredivation.tuktuk.SimpleClasses.Variables;
-
-import com.kredivation.tuktuk.R;
 import com.kredivation.tuktuk.update.Constants;
 import com.kredivation.tuktuk.update.InAppUpdateManager;
 

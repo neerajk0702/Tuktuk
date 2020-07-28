@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+
+
+
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
@@ -29,6 +32,7 @@ android {
 
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = 1.8
     }
 
     buildTypes {
@@ -112,6 +116,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.chaos.view:pinview:1.3.2'
     implementation 'com.google.android.play:core:1.6.4'
+    //implementation "com.giphy.sdk:ui:1.2.8"
+
+
 
 
 }

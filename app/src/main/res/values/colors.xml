@@ -30,4 +30,9 @@
 
     <color name="appthemcolor">#F01206</color>
 
+    <color name="emoji_input_tint">#353535</color>
+    <color name="message_item_background">#ffffff</color>
+    <color name="input_field_background">#ffffff</color>
+    <color name="settings_dialog_bg">#ffffff</color>
+
 </resources>
