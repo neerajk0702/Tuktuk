@@ -273,10 +273,11 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
                         } else {
                             Toast.makeText(context, "Please Login.", Toast.LENGTH_SHORT).show();
                         }
-                  
+
 
                         break;
                     case R.id.alert_layout:
+
                         OpenReportPost(item);
                         break;
                 }
