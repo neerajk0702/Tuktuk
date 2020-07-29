@@ -20,7 +20,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.kredivation.tuktuk"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 22
         versionName "3.2"
@@ -107,6 +107,7 @@ dependencies {
     implementation 'com.mindorks.android:prdownloader:0.6.0'
 
     // implementation 'com.writingminds:FFmpegAndroid:0.3.2'
+
     implementation 'com.github.adrielcafe:AndroidAudioConverter:0.0.8'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,10 @@ import com.kredivation.tuktuk.SimpleClasses.Variables;
 import com.kredivation.tuktuk.Video_Recording.Video_Recoder_A;
 
 import com.kredivation.tuktuk.R;
+import com.kredivation.tuktuk.runtimepermission.PermissionResultCallback;
+import com.kredivation.tuktuk.runtimepermission.PermissionUtils;
+
+import java.util.ArrayList;
 
 
 public class MainMenuFragment extends RootFragment implements View.OnClickListener {
@@ -51,7 +56,6 @@ LinearLayout tabView;
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,7 +68,6 @@ LinearLayout tabView;
         pager.setOffscreenPageLimit(5);
         pager.setPagingEnabled(false);
         view.setOnClickListener(this);
-
         return view;
     }
 
@@ -551,7 +554,4 @@ LinearLayout tabView;
         transaction.addToBackStack(null);
         transaction.replace(R.id.MainMenuFragment, chat_activity).commit();
     }
-
-
-
 }

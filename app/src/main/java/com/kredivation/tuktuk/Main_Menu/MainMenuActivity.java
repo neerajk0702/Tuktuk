@@ -1,20 +1,27 @@
 package com.kredivation.tuktuk.Main_Menu;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.kredivation.tuktuk.SimpleClasses.Variables;
 
 import com.kredivation.tuktuk.R;
+import com.kredivation.tuktuk.runtimepermission.PermissionResultCallback;
+import com.kredivation.tuktuk.runtimepermission.PermissionUtils;
+
+import java.util.ArrayList;
 
 
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity implements  ActivityCompat.OnRequestPermissionsResultCallback, PermissionResultCallback {
     public static MainMenuActivity mainMenuActivity;
     private MainMenuFragment mainMenuFragment;
     long mBackPressed;
@@ -23,7 +30,9 @@ public class MainMenuActivity extends AppCompatActivity {
     public static String token;
 
     public static Intent intent;
-
+    PermissionUtils permissionUtils;
+    ArrayList<String> permissions = new ArrayList<>();
+    private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +70,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
 
-
+        runTimePermission();
 
     }
 
@@ -105,11 +114,47 @@ public class MainMenuActivity extends AppCompatActivity {
 
     }
 
+    private void runTimePermission() {
+        permissionUtils = new PermissionUtils(MainMenuActivity.this);
+        permissions.add(Manifest.permission.INTERNET);
+        permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        permissionUtils.check_permission(permissions, "Storage Services Permissions are required for this App.", REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+    }
 
+    @Override
+    public void PermissionGranted(int request_code) {
 
+    }
 
+    @Override
+    public void PartialPermissionGranted(int request_code, ArrayList<String> granted_permissions) {
 
+    }
 
+    @Override
+    public void PermissionDenied(int request_code) {
+
+    }
+
+    @Override
+    public void NeverAskAgain(int request_code) {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS) {
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        permissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
 
 }
