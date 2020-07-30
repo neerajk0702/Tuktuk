@@ -2,6 +2,7 @@ package com.kredivation.tuktuk.SoundLists;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -37,7 +38,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import protect.videoeditor.IFFmpegProcessService;
 import com.kredivation.tuktuk.R;
 
 
@@ -86,7 +86,7 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
             Glide.with(this)
                     .load(Uri.fromFile(video_file))
                     .into(sound_image);
-
+            videotoAudioMP3Extractor();
             videotoAudioExtractor();
             // Load_FFmpeg();
 
@@ -109,7 +109,7 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
                 try {
                     copyFile(new File(Variables.app_folder + Variables.SelectedAudio_AAC),
                             new File(Variables.app_folder + item.video_id + ".mp3"));
-                    Toast.makeText(this, "Audio Saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "This Audio has been Saved", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -125,6 +125,7 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
                     playaudio();
                 } else if (video_file.exists()) {
                     //Load_FFmpeg();
+                    videotoAudioMP3Extractor();
                 } else
                     Save_Video();
 
@@ -164,11 +165,16 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
         Show_pause_state();
     }
 
-    /*@Override
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         StopPlaying();
-    }*/
+    }
+   @Override
+    protected void onPause() {
+        super.onPause();
+       StopPlaying();
+    }
 
     public void Show_playing_state() {
         findViewById(R.id.play_btn).setVisibility(View.GONE);
@@ -224,6 +230,7 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
                         .load(Uri.fromFile(video_file))
                         .into(sound_image);
                 // Load_FFmpeg();
+                videotoAudioMP3Extractor();
             }
 
             @Override
@@ -279,7 +286,7 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
 
     }*/
 
- /*   public void Extract_sound() {
+  /*  public void Extract_sound() {
 
         String[] complexCommand = {"-y", "-i", Variables.app_folder + item.video_id + ".mp4", "-vn", "-ar", "44100", "-ac", "2", "-b:a", "256k", "-f", "mp3",
                 Variables.app_folder + Variables.SelectedAudio_MP3};
@@ -428,12 +435,77 @@ public class VideoSound_A extends AppCompatActivity implements View.OnClickListe
         Crop Video From End:
         new AudioExtractor().genVideoUsingMuxer(videoFile, originalAudio, -1, timeFromWhereToEnd, true, true);*/
 
-        try {
-            new AudioExtractor().genVideoUsingMuxer(video_file.getAbsolutePath(), Variables.app_folder + Variables.SelectedAudio_AAC, -1, -1, true, false);
+      /*  try {
+            new AudioExtractor().genVideoUsingMuxer(Variables.app_folder + item.video_id + ".mp4", Variables.app_folder + Variables.SelectedAudio_AAC, -1, -1, true, false);
         } catch (IOException e) {
             e.printStackTrace();
         }
+*/
+
+        new AsyncTask<String,Void,String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                try {
+                    new AudioExtractor().genVideoUsingMuxer(Variables.app_folder + item.video_id + ".mp4", Variables.app_folder + Variables.SelectedAudio_AAC, -1, -1, true, false);
+                    return "Ok";
+                }catch (Exception e){
+                    return "error";
+                }
+
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                Functions.Show_loader(VideoSound_A.this, false, false);
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                if(result.equals("error")){
+                    Toast.makeText(VideoSound_A.this, "did not convert audio from video!" , Toast.LENGTH_SHORT).show();
+                }
+                Functions.cancel_loader();
+            }
+
+
+        }.execute();
     }
 
+    public void videotoAudioMP3Extractor() {
+
+        new AsyncTask<String,Void,String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                try {
+                    new AudioExtractor().genVideoUsingMuxer(Variables.app_folder + item.video_id + ".mp4", Variables.app_folder + Variables.SelectedAudio_MP3, -1, -1, true, false);
+                    return "Ok";
+                }catch (Exception e){
+                    return "error";
+                }
+
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                show_audio_loading();
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                if(result.equals("error")){
+                    Toast.makeText(VideoSound_A.this, "did not convert audio from video!" , Toast.LENGTH_SHORT).show();
+                }else{
+                    audio_file = new File(Variables.app_folder + Variables.SelectedAudio_MP3);
+                    /*if (audio_file.exists())
+                        playaudio();*/
+                }
+                hide_audio_loading();
+            }
+
+
+        }.execute();
+    }
 
 }

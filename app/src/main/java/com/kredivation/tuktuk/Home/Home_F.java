@@ -918,7 +918,7 @@ public class Home_F extends RootFragment implements Player.EventListener, Fragme
 
 
     }
-
+//apply watek mark in the download video
     public void Applywatermark(final Home_Get_Set item) {
 
         Bitmap myLogo = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_watermark_image)).getBitmap();

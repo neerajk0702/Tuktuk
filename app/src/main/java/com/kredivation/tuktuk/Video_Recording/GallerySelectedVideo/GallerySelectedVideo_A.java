@@ -309,7 +309,7 @@ public class GallerySelectedVideo_A extends AppCompatActivity implements View.On
         String video = root + "/"+"output.mp4";
         String finaloutput = root + "/"+"output2.mp4";
 
-        Merge_Video_Audio merge_video_audio=new Merge_Video_Audio(GallerySelectedVideo_A.this);
+        Merge_Video_Audio merge_video_audio=new Merge_Video_Audio(GallerySelectedVideo_A.this,2);
         merge_video_audio.doInBackground(audio_file,video,finaloutput);
 
     }

@@ -26,16 +26,18 @@ import java.util.List;
 
 
 // this is the class which will add the selected soung to the created video
-public class Merge_Video_Audio extends AsyncTask<String,String,String> {
+public class Merge_Video_Audio extends AsyncTask<String, String, String> {
 
     ProgressDialog progressDialog;
     Context context;
 
-    String audio,video,output;
+    String audio, video, output;
+    int galleryVideoFlag;//come from GallerySelectedVideo_A.java file
 
-    public Merge_Video_Audio(Context context){
-        this.context=context;
-        progressDialog=new ProgressDialog(context);
+    public Merge_Video_Audio(Context context, int galleryFlag) {
+        this.context = context;
+        this.galleryVideoFlag = galleryFlag;
+        progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please Wait...");
     }
 
@@ -49,14 +51,14 @@ public class Merge_Video_Audio extends AsyncTask<String,String,String> {
     public String doInBackground(String... strings) {
         try {
             progressDialog.show();
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
-         audio=strings[0];
-         video=strings[1];
-         output=strings[2];
+        audio = strings[0];
+        video = strings[1];
+        output = strings[2];
 
-        Log.d("resp",audio+"----"+video+"-----"+output);
+        Log.d("resp", audio + "----" + video + "-----" + output);
 
         Thread thread = new Thread(runnable);
         thread.start();
@@ -71,15 +73,14 @@ public class Merge_Video_Audio extends AsyncTask<String,String,String> {
     }
 
 
-    public void Go_To_preview_Activity(){
-        Intent intent =new Intent(context,Preview_Video_A.class);
+    public void Go_To_preview_Activity() {
+        Intent intent = new Intent(context, Preview_Video_A.class);
         intent.putExtra("path", Variables.root + "/output2.mp4");
         context.startActivity(intent);
     }
 
 
-
-    public Track CropAudio(String videopath,Track fullAudio){
+    public Track CropAudio(String videopath, Track fullAudio) {
         try {
 
             IsoFile isoFile = new IsoFile(videopath);
@@ -133,8 +134,7 @@ public class Merge_Video_Audio extends AsyncTask<String,String,String> {
     }
 
 
-
-   public Runnable runnable =new Runnable() {
+    public Runnable runnable = new Runnable() {
         @Override
         public void run() {
 
@@ -150,15 +150,21 @@ public class Merge_Video_Audio extends AsyncTask<String,String,String> {
                         nuTracks.add(t);
                     }
                 }
+                Track nuAudio = null;
+                if (galleryVideoFlag == 1) {
+                    Movie videoMovie = MovieCreator.build(video);
+                    nuAudio = videoMovie.getTracks().get(0);
+                }
+                else if(galleryVideoFlag == 2){
+                    nuAudio = new AACTrackImpl(new FileDataSourceImpl(audio));
+                }
 
 
-                 Track nuAudio = new AACTrackImpl(new FileDataSourceImpl(audio));
+                Track crop_track = CropAudio(video, nuAudio);
 
-                 Track crop_track= CropAudio(video,nuAudio);
+                nuTracks.add(crop_track);
 
-                 nuTracks.add(crop_track);
-
-                 m.setTracks(nuTracks);
+                m.setTracks(nuTracks);
 
                 Container mp4file = new DefaultMp4Builder().build(m);
 
@@ -167,16 +173,16 @@ public class Merge_Video_Audio extends AsyncTask<String,String,String> {
                 fc.close();
                 try {
                     progressDialog.dismiss();
-                }catch (Exception e){
-                    Log.d("resp",e.toString());
+                } catch (Exception e) {
+                    Log.d("resp", e.toString());
 
-                }finally {
+                } finally {
                     Go_To_preview_Activity();
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.d("resp",e.toString());
+                Log.d("resp", e.toString());
 
             }
 
@@ -185,6 +191,20 @@ public class Merge_Video_Audio extends AsyncTask<String,String,String> {
     };
 
 
-
-
 }
+
+
+
+/*
+    Movie video = MovieCreator.build(videoFile.getAbsolutePath());
+    Track videoTrack = video.getTracks().get(0);
+
+
+    Movie audio = MovieCreator.build(audioEncodedFile.getAbsolutePath()); // here
+    Track audioTrack = audio.getTracks().get(0);
+
+    Movie movie = new Movie();
+        movie.addTrack(videoTrack);
+                movie.addTrack(audioTrack);
+
+                Container out = new DefaultMp4Builder().build(movie);*/
